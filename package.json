@@ -1,0 +1,38 @@
+{
+  "name": "messenger-top-call",
+  "version": "0.1.0",
+  "description": "Facebook Messenger desktop wrapper for macOS with always-on-top video calls",
+  "main": "main.js",
+  "author": "OpenAI",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --mac dmg zip",
+    "dist:mac:x64": "electron-builder --mac dmg zip --x64",
+    "dist:mac:arm64": "electron-builder --mac dmg zip --arm64"
+  },
+  "build": {
+    "appId": "com.example.messengertopcall",
+    "productName": "Messenger Top Call",
+    "mac": {
+      "category": "public.app-category.social-networking",
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "hardenedRuntime": false,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist",
+      "extendInfo": {
+        "NSCameraUsageDescription": "This app needs camera access for Messenger video calls.",
+        "NSMicrophoneUsageDescription": "This app needs microphone access for Messenger audio and video calls."
+      }
+    }
+  },
+  "dependencies": {
+    "electron": "^35.0.0"
+  },
+  "devDependencies": {
+    "electron-builder": "^26.0.12"
+  }
+}
